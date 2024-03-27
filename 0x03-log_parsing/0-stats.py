@@ -24,24 +24,23 @@ try:
             if not line:
                 break
 
-            if len(data) > 2:
-                size = int(data[-1])
-                stat_code = data[-2]
+            size = int(data[-1])
+            stat_code = data[-2]
 
-                if stat_code in stat_codes:
-                    stat_codes[stat_code] += 1
+            if stat_code in stat_codes:
+                stat_codes[stat_code] += 1
 
-                file_size += size
-                count += 1
+            file_size += size
+            count += 1
 
-                if count == 10:
-                    compute_metrics(stat_codes, file_size)
-                    file_size = 0
-                    count = 0
-                    status_codes = {
-                        "200": 0, "301": 0, "400": 0, "401": 0,
-                        "403": 0, "404": 0, "405": 0, "500": 0
-                    }
+            if count == 10:
+                compute_metrics(stat_codes, file_size)
+                file_size = 0
+                count = 0
+                status_codes = {
+                    "200": 0, "301": 0, "400": 0, "401": 0,
+                    "403": 0, "404": 0, "405": 0, "500": 0
+                }
 
         except KeyboardInterrupt:
             break
