@@ -38,7 +38,7 @@ try:
                     compute_metrics(stat_codes, file_size)
                     count = 0
 
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, EOFError):
             break
 finally:
     compute_metrics(stat_codes, file_size)
