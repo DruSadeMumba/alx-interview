@@ -1,11 +1,6 @@
 #!/usr/bin/python3
 """Log parsing"""
 
-count = 0
-file_size = 0
-stat_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
-              "403": 0, "404": 0, "405": 0, "500": 0}
-
 
 def compute_metrics(status_code, file_sz):
     """Compute metrics"""
@@ -14,6 +9,11 @@ def compute_metrics(status_code, file_sz):
         if val != 0:
             print(f"{key}: {val}")
 
+
+count = 0
+file_size = 0
+stat_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
+              "403": 0, "404": 0, "405": 0, "500": 0}
 
 try:
     while True:
@@ -38,6 +38,10 @@ try:
                     compute_metrics(stat_codes, file_size)
                     file_size = 0
                     count = 0
+                    status_codes = {
+                        "200": 0, "301": 0, "400": 0, "401": 0,
+                        "403": 0, "404": 0, "405": 0, "500": 0
+                    }
 
         except KeyboardInterrupt:
             break
