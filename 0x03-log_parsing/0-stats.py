@@ -24,7 +24,7 @@ try:
             if not line:
                 break
 
-            if len(data) >= 7:
+            if len(data) > 2:
                 size = int(data[-1])
                 stat_code = data[-2]
 
